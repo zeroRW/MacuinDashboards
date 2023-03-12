@@ -81,6 +81,9 @@
         <h4>{{ Auth::user()->name }}</h4>
 
         <h5 class="mt-2">Cliente</h5>
+        @if (Auth::user()->perfil == null)
+            <h5>Artur </h5>
+        @endif
 
         <h5 class="mt-2">{{ Auth::user()->email }}</h5>
 
@@ -134,14 +137,35 @@
     @foreach ($tickets as $item)
     <!-- Modal Detalle Ticket -->
     <div class="modal fade" id="Detalle{{$item->id_ticket}}" tabindex="-1" aria-labelledby="Detalle" aria-hidden="true">
-        <div class="modal-dialog modal-Center">
+        <div class="modal-dialog modal-modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Detalles de Seguimiento</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            id de ticket {{$item->id_ticket}}
+                <div>
+                    <span>Clasifiación</span><br>
+                    <input type="text" class="form-control" value="{{$item->clasificacion}}" disabled>    
+                </div>
+                <div>
+                    <span>Detalle</span><br>
+                    <input type="text" class="form-control" value="{{$item->detalle}}" disabled>
+                </div>
+                <div>
+                    <span>Seguimiento por:</span>
+                    <input type="text" class="form-control" value="auxiliar" disabled>
+                </div>
+                <div>
+                    <span>Comentarios del auxiliar</span>
+                    <textarea cols="30" rows="3" class="form-control" disabled>...</textarea>
+                </div>
+                <div>
+                    <span>Fecha de solicitud</span>
+                    <input type="text" class="form-control" value="{{$item->created_at}}" disabled>
+                </div>
+            
+            {{-- id de ticket {{$item->id_ticket}}  --}}
             </div>
             <div class="modal-footer">
             </div>

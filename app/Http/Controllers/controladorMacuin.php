@@ -26,7 +26,7 @@ class controladorMacuin extends Controller
             }
             if(Auth::user()->perfil == 'jefe'){
                 
-            return redirect()->route('soporte');    
+                return redirect()->route('soporte_bo');    
             }
             if(Auth::user()->perfil == 'auxiliar'){
                 
@@ -163,30 +163,7 @@ class controladorMacuin extends Controller
     }
 
 
-    public function search(Request $request) {
-        $estatus = $request->input('filtro');
-        $tick = DB::table('tb_tickets')
-                ->crossJoin('users')
-                ->crossJoin('tb_departamentos')
-                ->select('tb_tickets.id_ticket', 'users.name', 'tb_departamentos.nombre', 'tb_tickets.created_at', 'tb_tickets.clasificacion', 'tb_tickets.detalle', 'tb_tickets.estatus')
-                ->where('tb_tickets.id_usu','=',DB::raw('users.id'))
-                ->where('tb_tickets.id_dpto','=',DB::raw('tb_departamentos.id_dpto'))
-                ->where('tb_tickets.estatus','=',$estatus)
-                ->get();
-        $usu = DB::table('users')
-                ->crossJoin('tb_departamentos')
-                ->select('users.name', 'tb_departamentos.nombre')
-                ->where('users.id_dpto','=',DB::raw('tb_departamentos.id_dpto'))
-                ->get();
-
-        $depa = DB::table('tb_departamentos')->get();
-        $estatus = DB::table('tb_tickets')
-                ->select('estatus')
-                ->groupBy('estatus')
-                ->get();
-
-        return view('soporte',compact('depa','tick','usu','estatus'));
-    }
+    
 
         //FUNCION ASIGNAR TICKET a AUXILIAR
     public function asignarTicket(Request $r){
@@ -276,5 +253,6 @@ class controladorMacuin extends Controller
     }
 }
 
+?>
 
 

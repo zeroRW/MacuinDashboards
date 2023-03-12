@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorMacuin;
 use App\Http\Controllers\ControladorMacuin_Vistas;
+use App\Http\Controllers\ControladorPDF;
 
 //RUTAS LOGIN
 Route::get('/',[ControladorMacuin_Vistas::class,'loginInicio'])->name('login');
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function(){
     Route::get('soporte_bo', [ControladorMacuin_Vistas::class, 'consultaDepa'])->name('soporte_bo');
 });
 
+// RUTAS PDFS
+Route::get('pdf', [ControladorPDF::class, 'pdf'])->name('d_pdf');
 ?>
 
 

@@ -191,6 +191,7 @@
     <!-- CARD DE TICKETS  -->
 
     <div class="container-soporte">
+      
         <div class="card" style="height: 19rem;">
             <div class="card-header bg-transparent mb-1"><h3>Consulta de Tickets</h3></div>
                 <div class="card-body overflow-auto" style="max-height: 230px; overflow-y: scroll;">
@@ -292,7 +293,7 @@
         </div>
 
 
-        {{-- BTN TEMPORAL PARA PROBAR COMPARTIR TICKETS --}}            <div class="card">
+            <div class="card">
                 <div class="card-header bg-transparent mb-3"><h4>Registrar Usuarios</h4></div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
